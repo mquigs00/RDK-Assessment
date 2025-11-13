@@ -21,7 +21,7 @@ class WeatherApp:
     def view_favorite_cities(self,):
         print("Favorite cities:")
         for city in self.favorite_cities:
-            print(city)
+            print(f"{city}: Description: {self.get_weather_description(city)}, Temperature: {self.get_temperature(city)}, Wind: {self.get_wind_speed(city)}")
 
     def get_city_coordinates(self, city_name):
         '''
@@ -62,7 +62,6 @@ class WeatherApp:
         '''
         data = self.get_city_data(city_name)
         temp = data["list"][1]["main"]["temp"]
-        print(f"It is {temp} degrees Fahrenheit in {city_name}")
         return temp
 
     def get_weather_description(self, city_name):
@@ -73,7 +72,6 @@ class WeatherApp:
         '''
         data = self.get_city_data(city_name)
         description = data["list"][1]["weather"][0]["description"]
-        print(f"Weather in {city_name}: {description}")
         return description
 
     def get_wind_speed(self, city_name):
@@ -84,5 +82,4 @@ class WeatherApp:
         '''
         data = self.get_city_data(city_name)
         wind_speed = data["list"][1]["wind"]["speed"]
-        print(f"Wind speed in {city_name}: {wind_speed} mph")
         return wind_speed
